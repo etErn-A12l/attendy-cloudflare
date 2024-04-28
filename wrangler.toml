@@ -1,0 +1,10 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "attendy-cloudflare"
+compatibility_date = "2024-04-19"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+
+[[kv_namespaces]]
+binding = "ATTENDY_STORAGE"
+id = "f0e3ccc789f348a08f86ca7358b5cf60"
