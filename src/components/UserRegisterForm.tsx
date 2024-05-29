@@ -45,7 +45,7 @@ const UserRegisterForm = () => {
       alert("Passwords do not match");
       return;
     }
-
+    alert("Successfully registered");
     router.push("/dashboard");
     
     // const body = {
