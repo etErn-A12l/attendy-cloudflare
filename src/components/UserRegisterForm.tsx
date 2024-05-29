@@ -17,6 +17,8 @@ import {
 } from "./ui/select";
 import axios from "axios";
 
+import { useRouter } from "next/navigation";
+
 const UserRegisterForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isStudent, setIsStudent] = useState(false);
@@ -30,6 +32,8 @@ const UserRegisterForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const router = useRouter();
+
   const handleCheckboxChange = () => {
     setIsStudent(!isStudent);
   };
@@ -41,27 +45,29 @@ const UserRegisterForm = () => {
       alert("Passwords do not match");
       return;
     }
-    
-    const body = {
-      fullName,
-      gender,
-      universityName,
-      stream,
-      admissionYear,
-      email,
-      password,
-    };
 
-    try {
-      await axios.post("/api/register", {
-        isTeacher: isStudent ? true : false,
-        body,
-      });
-      alert("Successfully registered");
-    } catch (error) {
-      console.error(error);
-      alert("Error registering");
-    }
+    router.push("/dashboard");
+    
+    // const body = {
+    //   fullName,
+    //   gender,
+    //   universityName,
+    //   stream,
+    //   admissionYear,
+    //   email,
+    //   password,
+    // };
+
+    // try {
+    //   await axios.post("/api/register", {
+    //     isTeacher: isStudent ? true : false,
+    //     body,
+    //   });
+    //   alert("Successfully registered");
+    // } catch (error) {
+    //   console.error(error);
+    //   alert("Error registering");
+    // }
   }
 
   return (
