@@ -6,24 +6,28 @@ import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 
 const UserLoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
+  const router = useRouter();
+
   async function onSubmit(event: { preventDefault: () => void }) {
     event.preventDefault();
-    try {
-      const { data } = await axios.put("/api/kv/put", {
-        name: "users",
-        value: JSON.stringify({ name, password }),
-      });
-      console.log(data);
-    } catch (error) {
-      const e = error as AxiosError;
-      console.log(e.response?.data);
-    }
+    router.push("/dashboard");
+    // try {
+    //   const { data } = await axios.put("/api/kv/put", {
+    //     name: "users",
+    //     value: JSON.stringify({ name, password }),
+    //   });
+    //   console.log(data);
+    // } catch (error) {
+    //   const e = error as AxiosError;
+    //   console.log(e.response?.data);
+    // }
   }
 
   return (
